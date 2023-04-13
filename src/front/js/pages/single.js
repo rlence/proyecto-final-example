@@ -1,28 +1,32 @@
-import React, { useState, useEffect, useContext } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import PropTypes from "prop-types";
-import { Link, useParams } from "react-router-dom";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import { getInfoUser } from "../service";
 
-export const Single = props => {
-	const { store, actions } = useContext(Context);
-	const params = useParams();
+export const Single = (props) => {
+  const { store, actions } = useContext(Context);
 
-	return (
-		<div className="jumbotron">
-			<h1 className="display-4">This will show the demo element: {store.demo[params.theid].title}</h1>
-			<img src={rigoImageUrl} />
-			<hr className="my-4" />
+  const [state, setState] = useState({
+    id: 0,
+    email: "",
+  });
 
-			<Link to="/">
-				<span className="btn btn-primary btn-lg" href="#" role="button">
-					Back home
-				</span>
-			</Link>
-		</div>
-	);
+  const getUser = async () => {
+    console.log("estoy aqui");
+    const data = await getInfoUser();
+    setState(data);
+  };
+
+  useEffect(() => getUser(), []);
+
+  return (
+    <div className="jumbotron">
+      <p>email: {state.email}</p>
+      <p>id: {state.id}</p>
+    </div>
+  );
 };
 
 Single.propTypes = {
-	match: PropTypes.object
+  match: PropTypes.object,
 };

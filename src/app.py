@@ -7,10 +7,11 @@ from flask_migrate import Migrate
 from flask_swagger import swagger
 from flask_cors import CORS
 from api.utils import APIException, generate_sitemap
-from api.models import db
-from api.routes import api
+from api.models.index import db
+import api.domain.user.router  as api_user
 from api.admin import setup_admin
 from api.commands import setup_commands
+from flask_jwt_extended import JWTManager
 
 #from models import Person
 
@@ -30,6 +31,9 @@ app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 MIGRATE = Migrate(app, db, compare_type = True)
 db.init_app(app)
 
+app.config["JWT_SECRET_KEY"] = "super-secret"  # Change this!
+jwt = JWTManager(app)
+
 # Allow CORS requests to this API
 CORS(app)
 
@@ -40,7 +44,7 @@ setup_admin(app)
 setup_commands(app)
 
 # Add all endpoints form the API with a "api" prefix
-app.register_blueprint(api, url_prefix='/api')
+app.register_blueprint(api_user.api, url_prefix='/api/user')
 
 # Handle/serialize errors like a JSON object
 @app.errorhandler(APIException)
