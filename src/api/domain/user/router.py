@@ -36,13 +36,3 @@ def get_user():
     if isinstance(user_response, User):
         return jsonify(user_response.serialize()), 200
     return jsonify(user_response), user_response['status']
-
-
-@api.route('/login/hello', methods=['POST'])
-def create_user():
-    body = request.get_json()
-    user = Controller.create_user(body)
-
-    if isinstance(user, User):
-        return jsonify(user.serialize()), 200
-    return jsonify(user), user['status']
