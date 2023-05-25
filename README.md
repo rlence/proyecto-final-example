@@ -1,5 +1,7 @@
 # WebApp boilerplate with React JS and Flask API
 
+#### Intallal
+
 install docker and docker-compose
 
 install docker windows https://docs.docker.com/desktop/install/windows-install/
@@ -9,8 +11,17 @@ install docker mac https://docs.docker.com/desktop/install/mac-install/
 install node para el front -> https://nodejs.org/en/download
 install python for el back -> https://www.python.org/downloads/
 
+#### Importante
+
+hay que crear su archivo .env para esto
+pueden copiarlo con el `$ cp .env.example .env` que eso copiara el .env.example a un .env
+si tienen otras variables de entorno aparte de las que estan en el examples traerselas del gitpod
+
+### Levantar entorno
+
 ejecutar el `$ docker-compose up` para levantar la base de datos
 ejecutar en un terminal `$ docker-compose exec -it postgres /bin/bash`.
+en caso de user ubuntu `$ sudo docker-compose exec postgres bash`
 
 luego entrar en la base de datos: `$ psql`
 crear la base de datos example `$ create database example;`
@@ -47,5 +58,3 @@ a continuación ejecutar el:
 4. Migrate the migrations: `$ pipenv run migrate` (skip if you have not made changes to the models on the `./src/api/models.py`)
 5. Run the migrations: `$ pipenv run upgrade`
 6. Run the application: `$ pipenv run start`
-
-### Backend Populate Table Users
