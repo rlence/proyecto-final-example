@@ -1,17 +1,31 @@
 # WebApp boilerplate with React JS and Flask API
 
-Build web applications using React.js for the front end and python/flask for your backend API.
+install docker and docker-compose
 
-- Documentation can be found here: https://start.4geeksacademy.com/starters/react-flask
-- Here is a video on [how to use this template](https://www.loom.com/share/f37c6838b3f1496c95111e515e83dd9b)
-- Integrated with Pipenv for package managing.
-- Fast deloyment to heroku [in just a few steps here](https://start.4geeksacademy.com/backend/deploy-heroku-posgres).
-- Use of .env file.
-- SQLAlchemy integration for database abstraction.
+ejecutar el `$ docker-compose up` para levantar la base de datos
+ejecutar en un terminal `$ docker-compose exec -it postgres /bin/bash`.
+
+luego entrar en la base de datos: `$ psql`
+crear la base de datos example `$ create database example;`
+comprobar que existe con `$ \l`
+
+luego ejecutar el `$ pipenv shell`
+despues el `$ pipenv install`
+
+luego el `$ npm install`
+
+antes de levantar el entorno compiarse del .env.example las variables de entorno del DATABASE_URL y el BACKEND_URL que tienen el comentario de IN LOCAL
+
+luego si hace falta ejecutar:
+`$ pipenv run init` -> si no existe carpeta de migraciones
+`$ pipenv run migrate`
+`$ pipenv run upgrade`
+
+a continuación ejecutar el:
+`$ pipenv run start`
+`$ npm run start`
 
 ### Manual Installation:
-
-It is recomended to install the backend first, make sure you have Python 3.8, Pipenv and a database engine (Posgress recomended)
 
 1. Install the python packages: `$ pipenv install`
 2. Create a .env file based on the .env.example: `$ cp .env.example .env`
@@ -28,40 +42,3 @@ It is recomended to install the backend first, make sure you have Python 3.8, Pi
 6. Run the application: `$ pipenv run start`
 
 ### Backend Populate Table Users
-
-To insert test users in the database execute the following command:
-
-```sh
-$ flask insert-test-users 5
-```
-
-And you will see the following message:
-
-```
-  Creating test users
-  test_user1@test.com created.
-  test_user2@test.com created.
-  test_user3@test.com created.
-  test_user4@test.com created.
-  test_user5@test.com created.
-  Users created successfully!
-```
-
-To update with all yours tables you can edit the file app.py and go to the line 80 to insert the code to populate others tables
-
-### Front-End Manual Installation:
-
--   Make sure you are using node version 14+ and that you have already successfully installed and runned the backend.
-
-1. Install the packages: `$ npm install`
-2. Start coding! start the webpack dev server `$ npm run start`
-
-## Publish your website!
-
-This boilerplate it's 100% read to deploy with Render.com and Heroku in a matter of minutes. Please read the [official documentation about it](https://start.4geeksacademy.com/deploy).
-
-### Contributors
-
-This template was built as part of the 4Geeks Academy [Coding Bootcamp](https://4geeksacademy.com/us/coding-bootcamp) by [Alejandro Sanchez](https://twitter.com/alesanchezr) and many other contributors. Find out more about our [Full Stack Developer Course](https://4geeksacademy.com/us/coding-bootcamps/part-time-full-stack-developer), and [Data Science Bootcamp](https://4geeksacademy.com/us/coding-bootcamps/datascience-machine-learning).
-
-You can find other templates and resources like this at the [school github page](https://github.com/4geeksacademy/).
