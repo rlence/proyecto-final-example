@@ -2,6 +2,13 @@
 
 install docker and docker-compose
 
+install docker windows https://docs.docker.com/desktop/install/windows-install/
+install docker ubuntu https://docs.docker.com/engine/install/ubuntu/
+install docker mac https://docs.docker.com/desktop/install/mac-install/
+
+install node para el front -> https://nodejs.org/en/download
+install python for el back -> https://www.python.org/downloads/
+
 ejecutar el `$ docker-compose up` para levantar la base de datos
 ejecutar en un terminal `$ docker-compose exec -it postgres /bin/bash`.
 
